@@ -6,6 +6,7 @@ import './auth.css';
 const LoginPage = () => {
   const preLoadParticles = Array(30).fill(0);
 
+  const [erorrMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -15,8 +16,21 @@ const LoginPage = () => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const validateEmail = (email) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (email === '' || password === '') {
+      setErrorMessage('Please fill out all fields!');
+      return;
+    }
+    if (!validateEmail()) {
+      setErrorMessage('Email not valid!');
+      return;
+    }
     console.log(email, password);
   };
 
@@ -34,11 +48,23 @@ const LoginPage = () => {
         </div>
         <div className="form-control flex a-j-center">
           <i className="fas fa-envelope" aria-hidden="true"></i>
-          <input onChange={onChange} name="email" value={email} type="email" placeholder="Email" />
+          <input
+            onChange={onChange}
+            name="email"
+            value={email}
+            type="email"
+            placeholder="Email"
+          />
         </div>
         <div className="form-control flex a-j-center">
           <i className="fas fa-lock" aria-hidden="true"></i>
-          <input onChange={onChange} name="password" value={password} type="password" placeholder="Password" />
+          <input
+            onChange={onChange}
+            name="password"
+            value={password}
+            type="password"
+            placeholder="Password"
+          />
         </div>
         <div className="form-control">
           <button type="submit">Login</button>
