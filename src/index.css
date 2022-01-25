@@ -28,6 +28,10 @@ html {
   scroll-behavior: smooth;
 }
 
+button {
+  cursor: pointer;
+}
+
 ul {
   list-style-type: none;
 }

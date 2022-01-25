@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Routes, Route } from 'react-router';
 
-import LandingPage from './containers/Landing.page.jsx';
+import LandingPage from './containers/landing-page/Landing.page.jsx';
 import RegisterPage from './containers/auth/Register.page.jsx';
 import LoginPage from './containers/auth/Login.page.jsx';
 import ErrorPage from './containers/404/Error.page.jsx';
