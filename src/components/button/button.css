@@ -1,0 +1,30 @@
+.button {
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--main-color);
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 18px;
+    margin-right: 0.5rem;
+}
+
+.button.primary {
+    background: var(--main-color);
+    color: #fff;
+}
+
+.button.primary:hover,
+.button.primary:focus-within {
+    background: transparent;
+    color: var(--main-color);
+}
+
+.button.secondary {
+    background: transparent;
+    color: var(--main-color);
+}
+
+.button.secondary:hover,
+.button.secondary:focus-within {
+    background: var(--main-color);
+    color: #fff;
+}

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './landingpage.css';
 
 import Header from '../../components/header/Header.jsx';
+import Button from '../../components/button/Button.jsx';
 
 const LandingPage = () => {
   return (
@@ -21,10 +22,10 @@ const LandingPage = () => {
             </div>
             <div className="btn-group">
               <Link to="/about-us">
-                <button>About Us</button>
+                <Button btnText="About Us" primary={true} />
               </Link>
               <Link to="/auth/login">
-                <button>Login</button>
+                <Button btnText="Login" primary={false} />
               </Link>
             </div>
           </div>

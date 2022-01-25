@@ -1,11 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Button = () => {
+import './button.css';
+
+const Button = ({ btnText, primary }) => {
     return (
-        <button>
-            Button Text
+        <button className={`button t-delay-2 ${primary ? 'primary' : 'secondary'}`}>
+            {btnText}
         </button>
     );
+};
+
+Button.defaultProps = {
+    primary: true,
+    btnText: ''
+};
+  
+Button.propTypes = {
+    primary: PropTypes.bool.isRequired,
+    btnText: PropTypes.string.isRequired
 };
 
 export default Button;
