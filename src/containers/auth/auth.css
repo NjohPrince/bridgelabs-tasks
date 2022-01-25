@@ -705,45 +705,51 @@
 }
 
 .form-control {
-    position: relative;
-    margin-bottom: 0.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
 }
 
 .form-control .head h1 {
-    margin-bottom: 1rem;
-    font-weight: 800;
-    color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 1rem;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .form-control i {
-    position: absolute;
-    left: 1rem;
-    color: var(--main-color);
+  position: absolute;
+  left: 1rem;
+  color: var(--main-color);
 }
 
 .form-control input {
-    width: 100%;
-    padding: 0.8rem 3rem;
-    font-size: 18px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    color: var(--main-color);
-    transition: 0.2s ease-in-out;
-    -webkit-transition: 0.2s ease-in-out;
-    outline: none;
+  width: 100%;
+  padding: 0.8rem 3rem;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: var(--main-color);
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  outline: none;
 }
 
 .form-control input:focus-within,
 .form-control input:focus {
-    border: 1px solid var(--main-color);
+  border: 1px solid var(--main-color);
 }
 
 .form-control button {
-    padding: 0.8rem 2rem;
-    color: #fff;
-    background: var(--main-color);
-    border: none;
-    border-radius: 3px;
-    font-size: 18px;
-    font-weight: 700;
+  padding: 0.8rem 2rem;
+  color: #fff;
+  background: var(--main-color);
+  border: none;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 600px) {
+  .auth {
+    width: 100%;
+  }
 }

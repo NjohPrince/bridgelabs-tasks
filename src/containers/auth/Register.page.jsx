@@ -12,7 +12,7 @@ const RegisterPage = () => {
         preLoadParticles.map(() => {
           return <div class="particle"></div>;
         })}
-      <div className="auth">
+      <form className="auth">
         <div className="form-control">
           <div className="head">
             <h1>Register</h1>
@@ -48,7 +48,7 @@ const RegisterPage = () => {
             </Link>
           </h4>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
