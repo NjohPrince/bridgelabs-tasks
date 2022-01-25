@@ -1,3 +1,41 @@
+.welcome .content h2 {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--main-color);
+    margin-bottom: 1rem;
+}
+
+.welcome .content {
+    margin-right: 2rem;
+}
+
+.welcome .content input {
+    padding: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    font-size: 18px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border: 2px solid transparent;
+    outline: none;
+    font-weight: 700;
+    border-radius: 35px;
+    box-shadow: 0 0 10px 1px #f3f3f3;
+    transition: 0.2s ease-in-out;
+    -webkit-transition: 0.2s ease-in-out;
+}
+
+.welcome .content input:focus,
+.welcome .content input:focus-within {
+    border: 2px solid var(--main-color);
+}
+
+.welcome .content h4 {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 18px;
+}
+
 .welcome .illustration img {
-    width: 300px;
+    width: 100%;
+    margin-top: 5rem;
 }

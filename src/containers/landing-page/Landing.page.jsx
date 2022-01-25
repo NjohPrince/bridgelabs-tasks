@@ -11,7 +11,7 @@ const LandingPage = () => {
       <Header />
       <div className="landing">
         <div className="welcome default-container flex a-j-center">
-          <div className="content flex-one">
+          <div className="content flex-half">
             <h2>
               Artificial Intelligence Driving Results For The Travel Industry.
             </h2>
