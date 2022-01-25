@@ -47,8 +47,8 @@ const LoginPage = () => {
   return (
     <div className="auth-container relative flex default-container a-j-center">
       {preLoadParticles.length > 0 &&
-        preLoadParticles.map(() => {
-          return <div class="particle"></div>;
+        preLoadParticles.map((index) => {
+          return <div key={index} className="particle"></div>;
         })}
       <form onSubmit={handleSubmit} className="auth">
         <div className="form-control">

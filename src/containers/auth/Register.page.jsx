@@ -8,13 +8,15 @@ const RegisterPage = () => {
 
   const [erorrMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
-    fullname: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
     confirm_password: '',
+    avatar: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
   });
 
-  const { fullname, email, password, confirm_password } = formData;
+  const { first_name, last_name, email, password, confirm_password } = formData;
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrorMessage('');
@@ -31,13 +33,14 @@ const RegisterPage = () => {
     if (
       email === '' ||
       password === '' ||
-      fullname === '' ||
+      first_name === '' ||
+      last_name === '' ||
       confirm_password === ''
     ) {
       setErrorMessage('Please fill out all fields!');
       return;
     }
-    if (fullname.length <= 2) {
+    if (first_name.length < 2 || last_name.length < 2) {
       setErrorMessage('Name length too short!');
       return;
     }
@@ -53,14 +56,14 @@ const RegisterPage = () => {
       setErrorMessage('Passwords must match!');
       return;
     }
-    console.log(email, password);
+    console.log(formData);
   };
 
   return (
     <div className="auth-container relative flex default-container a-j-center">
       {preLoadParticles.length > 0 &&
-        preLoadParticles.map(() => {
-          return <div class="particle"></div>;
+        preLoadParticles.map((index) => {
+          return <div key={index} className="particle"></div>;
         })}
       <form onSubmit={handleSubmit} className="auth">
         <div className="form-control">
@@ -70,19 +73,53 @@ const RegisterPage = () => {
         </div>
         <div className="form-control flex a-j-center">
           <i className="fas fa-user" aria-hidden="true"></i>
-          <input onChange={onChange} name="fullname" value={fullname} type="text" placeholder="Enter Your Full Name" />
+          <input
+            onChange={onChange}
+            name="first_name"
+            value={first_name}
+            type="text"
+            placeholder="First Name"
+          />
+        </div>
+        <div className="form-control flex a-j-center">
+          <i className="fas fa-user" aria-hidden="true"></i>
+          <input
+            onChange={onChange}
+            name="last_name"
+            value={last_name}
+            type="text"
+            placeholder="Last Name"
+          />
         </div>
         <div className="form-control flex a-j-center">
           <i className="fas fa-envelope" aria-hidden="true"></i>
-          <input onChange={onChange} name="email" value={email} type="text" placeholder="Your Email" />
+          <input
+            onChange={onChange}
+            name="email"
+            value={email}
+            type="text"
+            placeholder="Your Email"
+          />
         </div>
         <div className="form-control flex a-j-center">
           <i className="fas fa-lock" aria-hidden="true"></i>
-          <input onChange={onChange} name="password" value={password} type="password" placeholder="Password" />
+          <input
+            onChange={onChange}
+            name="password"
+            value={password}
+            type="password"
+            placeholder="Password"
+          />
         </div>
         <div className="form-control flex a-j-center">
           <i className="fas fa-lock" aria-hidden="true"></i>
-          <input onChange={onChange} name="confirm_password" value={confirm_password} type="password" placeholder="Confirm Password" />
+          <input
+            onChange={onChange}
+            name="confirm_password"
+            value={confirm_password}
+            type="password"
+            placeholder="Confirm Password"
+          />
         </div>
         <div className="form-control">
           <button type="submit">Register</button>
