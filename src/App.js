@@ -19,7 +19,7 @@ const App = () => {
           <Route exact path="/auth/register" element={<RegisterPage />} />
 
           {/** Error - 404 Route */}
-          <Route element={<ErrorPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </div>
