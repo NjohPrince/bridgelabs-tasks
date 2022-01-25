@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './auth.css';
 
+import { login } from '../../auth-sevice/authService.js';
+
 const LoginPage = () => {
   const preLoadParticles = Array(30).fill(0);
 
@@ -34,7 +36,12 @@ const LoginPage = () => {
       setErrorMessage('Email not valid!');
       return;
     }
-    console.log(email, password);
+    console.log(process.env.REACT_APP_API_KEY);
+    login(email, password).then((response) => {
+      console.log(response);
+    }).catch(error => { 
+      console.log(error.response);
+    })
   };
 
   return (

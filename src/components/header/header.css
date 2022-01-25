@@ -2,6 +2,8 @@
     padding: 1.5rem 8vw;
     position: fixed;
     width: 100%;
+    z-index: 9999;
+    background: #fff;
     box-shadow: 5px 5px 10px 1px #f3f3f3;
     -webkit-box-shadow: 5px 5px 10px 1px #f3f3f3;
 }
