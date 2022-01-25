@@ -10,8 +10,8 @@ const LandingPage = () => {
     <React.Fragment>
       <Header />
       <div className="landing">
-        <div className="welcome">
-          <div className="content">
+        <div className="welcome default-container flex a-j-center">
+          <div className="content flex-one">
             <h2>
               Artificial Intelligence Driving Results For The Travel Industry.
             </h2>
@@ -28,7 +28,7 @@ const LandingPage = () => {
               </Link>
             </div>
           </div>
-          <div className="illustration">
+          <div className="illustration flex-one">
             <img src="/static/bicycle.svg" alt="illustration" />
           </div>
         </div>
