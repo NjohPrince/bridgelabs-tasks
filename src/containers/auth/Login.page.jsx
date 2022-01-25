@@ -13,8 +13,10 @@ const LoginPage = () => {
   });
 
   const { email, password } = formData;
-  const onChange = (e) =>
+  const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrorMessage('');
+  };
 
   const validateEmail = (email) => {
     return email.match(
@@ -22,12 +24,13 @@ const LoginPage = () => {
     );
   };
   const handleSubmit = (e) => {
+    setErrorMessage('');
     e.preventDefault();
     if (email === '' || password === '') {
       setErrorMessage('Please fill out all fields!');
       return;
     }
-    if (!validateEmail()) {
+    if (!validateEmail(email)) {
       setErrorMessage('Email not valid!');
       return;
     }
@@ -52,7 +55,7 @@ const LoginPage = () => {
             onChange={onChange}
             name="email"
             value={email}
-            type="email"
+            type="text"
             placeholder="Email"
           />
         </div>
@@ -79,6 +82,9 @@ const LoginPage = () => {
               Register
             </Link>
           </h4>
+        </div>
+        <div className="form-control">
+          {erorrMessage && <h4 className="error">{erorrMessage}</h4>}
         </div>
       </form>
     </div>

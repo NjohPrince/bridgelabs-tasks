@@ -24,7 +24,7 @@ const RegisterPage = () => {
         </div>
         <div className="form-control flex a-j-center">
           <i className="fas fa-envelope" aria-hidden="true"></i>
-          <input type="email" placeholder="Your Email" />
+          <input type="text" placeholder="Your Email" />
         </div>
         <div className="form-control flex a-j-center">
           <i className="fas fa-lock" aria-hidden="true"></i>

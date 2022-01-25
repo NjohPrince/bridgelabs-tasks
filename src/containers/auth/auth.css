@@ -748,6 +748,14 @@
   font-weight: 700;
 }
 
+.form-control .error {
+  padding: 0.5rem;
+  color: #fff;
+  background: rgb(252, 27, 27);
+  border-radius: 3px;
+  width: fit-content;
+}
+
 @media screen and (max-width: 600px) {
   .auth {
     width: 100%;
