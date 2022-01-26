@@ -22,9 +22,12 @@ const LoginPage = () => {
 
   const validateEmail = (email) => {
     return email.match(
+      // eslint-disable-next-line
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
   };
+
+  const [loading, setLoading] = useState(false);
   const handleSubmit = (e) => {
     setErrorMessage('');
     e.preventDefault();
@@ -36,20 +39,36 @@ const LoginPage = () => {
       setErrorMessage('Email not valid!');
       return;
     }
-    console.log(process.env.REACT_APP_API_KEY);
-    login(email, password).then((response) => {
-      console.log(response);
-    }).catch(error => { 
-      console.log(error.response);
-    })
+    setLoading(true);
+    login(email, password)
+      .then((response) => {
+        response
+          .json()
+          .then((data) => {
+            if (data.detail) {
+              setErrorMessage(data.detail);
+              return;
+            }
+            const { token, refresh } = data;
+            // console.log(token);
+            // console.log(refresh);
+          })
+          .catch((error) => {
+            console.log('Inner Error: ', error);
+            setLoading(false);
+          });
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log('Outer Error: ', error.response);
+        setLoading(false);
+      });
   };
 
   return (
     <div className="auth-container relative flex default-container a-j-center">
       {preLoadParticles.length > 0 &&
-        preLoadParticles.map((index) => {
-          return <div key={index} className="particle"></div>;
-        })}
+        preLoadParticles.map(() => <div className="particle"></div>)}
       <form onSubmit={handleSubmit} className="auth">
         <div className="form-control">
           <div className="head">
@@ -77,7 +96,15 @@ const LoginPage = () => {
           />
         </div>
         <div className="form-control">
-          <button type="submit">Login</button>
+          <button
+            style={{
+              opacity: `${loading ? '0.3' : '1'}`,
+            }}
+            disabled={loading}
+            type="submit"
+          >
+            Login
+          </button>
         </div>
         <div className="form-control">
           <h4 style={{ marginTop: '1rem' }}>

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './auth.css';
 
+import { signup } from '../../auth-sevice/authService.js';
+
 const RegisterPage = () => {
   const preLoadParticles = Array(30).fill(0);
 
@@ -11,12 +13,21 @@ const RegisterPage = () => {
     first_name: '',
     last_name: '',
     email: '',
+    contact: '',
     password: '',
     confirm_password: '',
     avatar: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
   });
 
-  const { first_name, last_name, email, password, confirm_password } = formData;
+  const {
+    first_name,
+    last_name,
+    email,
+    contact,
+    password,
+    confirm_password,
+    avatar,
+  } = formData;
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrorMessage('');
@@ -24,9 +35,12 @@ const RegisterPage = () => {
 
   const validateEmail = (email) => {
     return email.match(
+      // eslint-disable-next-line
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
   };
+
+  const [loading, setLoading] = useState(false);
   const handleSubmit = (e) => {
     setErrorMessage('');
     e.preventDefault();
@@ -56,15 +70,35 @@ const RegisterPage = () => {
       setErrorMessage('Passwords must match!');
       return;
     }
-    console.log(formData);
+    setLoading(true);
+    signup(email, first_name, last_name, contact, password, avatar)
+      .then((response) => {
+        response
+          .json()
+          .then((data) => {
+            if (data.detail) {
+              setErrorMessage(data.detail);
+              return;
+            }
+            console.log(data);
+            window.location.pathname = '/auth/login';
+          })
+          .catch((error) => {
+            console.log('Inner Error: ', error);
+            setLoading(false);
+          });
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log('Outer Error: ', error.response);
+        setLoading(false);
+      });
   };
 
   return (
     <div className="auth-container relative flex default-container a-j-center">
       {preLoadParticles.length > 0 &&
-        preLoadParticles.map((index) => {
-          return <div key={index} className="particle"></div>;
-        })}
+        preLoadParticles.map(() => <div className="particle"></div>)}
       <form onSubmit={handleSubmit} className="auth">
         <div className="form-control">
           <div className="head">
@@ -102,6 +136,16 @@ const RegisterPage = () => {
           />
         </div>
         <div className="form-control flex a-j-center">
+          <i className="fas fa-phone-alt" aria-hidden="true"></i>
+          <input
+            onChange={onChange}
+            name="contact"
+            value={contact}
+            type="number"
+            placeholder="Your Contact"
+          />
+        </div>
+        <div className="form-control flex a-j-center">
           <i className="fas fa-lock" aria-hidden="true"></i>
           <input
             onChange={onChange}
@@ -122,7 +166,15 @@ const RegisterPage = () => {
           />
         </div>
         <div className="form-control">
-          <button type="submit">Register</button>
+          <button
+            style={{
+              opacity: `${loading ? '0.3' : '1'}`,
+            }}
+            disabled={loading}
+            type="submit"
+          >
+            Register
+          </button>
         </div>
         <div className="form-control">
           <h4 style={{ marginTop: '1rem' }}>
