@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './auth.css';
 
 import { login } from '../../auth-sevice/authService.js';
 
-const LoginPage = () => {
+const LoginPage = ({ token }) => {
   const preLoadParticles = Array(30).fill(0);
+
+  useEffect(() => {
+    if (token && token !== '') {
+      window.location.pathname = '/';
+    }
+  }, [token]);
 
   const [erorrMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
