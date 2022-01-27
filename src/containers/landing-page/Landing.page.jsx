@@ -6,10 +6,10 @@ import './landingpage.css';
 import Header from '../../components/header/Header.jsx';
 import Button from '../../components/button/Button.jsx';
 
-const LandingPage = () => {
+const LandingPage = ({ token }) => {
   return (
     <React.Fragment>
-      <Header />
+      <Header token={token} />
       <div className="landing">
         <div className="welcome default-container flex a-j-center">
           <div className="content flex-half">

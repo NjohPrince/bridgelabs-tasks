@@ -40,7 +40,7 @@ app.post('/api/token', (req, res) => {
 app.get('/api/token', (req, res) => {
   const token = req.cookies.access_token;
   if (!token) {
-    res.status(403).json({ message: "Unauthorized, please login to access resource" })
+    res.status(403).json({ message: "No token found." })
   }
   res.status(200).json({ token: token })
 });
