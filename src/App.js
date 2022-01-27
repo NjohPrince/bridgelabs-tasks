@@ -6,6 +6,7 @@ import LandingPage from './containers/landing-page/Landing.page.jsx';
 import RegisterPage from './containers/auth/Register.page.jsx';
 import LoginPage from './containers/auth/Login.page.jsx';
 import ErrorPage from './containers/404/Error.page.jsx';
+import Profile from './containers/profile/Profile.jsx';
 
 const App = () => {
   const [token, setToken] = useState('');
@@ -52,6 +53,9 @@ const App = () => {
             path="/auth/register"
             element={<RegisterPage token={token} />}
           />
+
+          {/** User Profile */}
+          <Route exact path="/profile" element={<Profile token={token} />} />
 
           {/** Error - 404 Route */}
           <Route path="*" element={<ErrorPage />} />
