@@ -10,12 +10,28 @@
 
 #
 
-## Installed Libraries?
+## Installed Libraries
 
-#### Yes. They include:
+#### ==> They include:
 
-#### > `react-helmet` for manipulation of meta tags on a page, and improving on the SEO.
+#### 1. `react-helmet` for manipulation of meta tags on a page, and improving on the SEO.
 
-#### > `dotenv` for accessing `.env files content`
+#### 2. `dotenv` for accessing `.env files content`
 
-#### > `react-router-dom` control routing between pages
+#### 3. `react-router-dom` control routing between pages
+
+#### 4. `express` Express, is a back end web application framework for Node. js
+
+#### 5. `cors` CORS mechanism supports secure cross-origin requests and data transfers between browsers and servers
+
+#### 6. `cookie-parser` cookie-parser is a middleware which parses cookies attached to the client request object.
+
+#
+
+## Why include a node server😀
+
+#### 1. Store user access token in http only cookie
+
+#### 2. Also used to get the token from the cookie storage
+
+#### 3. Logout user, hence clearing token from the cookie

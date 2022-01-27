@@ -1,12 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { logout } from '../../auth-sevice/authService.js';
+
 import './header.css';
 
 import { AppName } from '../../utils/appName/AppName.js';
 import { NavLinks } from '../../utils/links/Links.js';
 
 const Header = ({ token }) => {
+  const handleLogout = () => {
+    logout(token)
+      .then((response) => {
+        response
+          .json()
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((error) => {
+            console.log('Error from server');
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log('Network issues.');
+      });
+  };
+
   return (
     <div className="navbar flex a-j-space-between">
       <div className="logo">
@@ -27,10 +47,10 @@ const Header = ({ token }) => {
           })}
         {token && token !== '' && (
           <>
-            <Link className="t-delay-2" to='/profile'>
+            <Link className="t-delay-2" to="/profile">
               Profile
             </Link>
-            <Link className="t-delay-2" to='/profile'>
+            <Link onClick={handleLogout} className="t-delay-2" to="/#logout">
               Logout
             </Link>
           </>

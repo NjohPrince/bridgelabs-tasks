@@ -49,8 +49,15 @@ const LoginPage = () => {
               setErrorMessage(data.detail);
               return;
             }
-            const { token, refresh } = data;
-            localStorage.setItem("refresh_token", refresh);
+            console.log(data);
+
+            const { token, refresh, first_name, last_name, phone, email } =
+              data;
+            localStorage.setItem(
+              'user_data',
+              JSON.stringify({ first_name, last_name, email, phone })
+            );
+            localStorage.setItem('refresh_token', refresh);
 
             fetch(`/api/token`, {
               method: 'POST',
@@ -61,16 +68,21 @@ const LoginPage = () => {
               body: JSON.stringify({
                 token,
               }),
-            }).then((data) => {
-              data.json().then(message => {
-                console.log(message);
-                window.location.pathname = '/';
-              }).catch(error => {
-                console.log(error);
-              })
-            }).catch(error => {
-              console.log(error);
             })
+              .then((data) => {
+                data
+                  .json()
+                  .then((message) => {
+                    console.log(message);
+                    window.location.pathname = '/';
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              })
+              .catch((error) => {
+                console.log(error);
+              });
           })
           .catch((error) => {
             console.log('Inner Error: ', error);

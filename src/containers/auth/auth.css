@@ -698,7 +698,7 @@
 .auth {
   width: 550px;
   box-shadow: 0 0 10px 1px #dfdfdf;
-  padding: 2rem;
+  padding: 2rem 0.8rem;
   border-radius: 5px;
   background: #fff;
   z-index: 9999;
@@ -717,14 +717,15 @@
 
 .form-control i {
   position: absolute;
-  left: 1rem;
+  left: 1.1rem;
   color: var(--main-color);
 }
 
 .form-control input {
   width: 100%;
   padding: 0.8rem 3rem;
-  font-size: 18px;
+  padding-right: 0.8rem;
+  font-size: 17px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   color: var(--main-color);
@@ -744,7 +745,7 @@
   background: var(--main-color);
   border: none;
   border-radius: 3px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
 }
 
