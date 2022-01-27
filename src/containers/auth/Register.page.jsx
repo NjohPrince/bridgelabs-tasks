@@ -90,7 +90,7 @@ const RegisterPage = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log('Outer Error: ', error.response);
+        console.log('Outer Error: ', error);
         setLoading(false);
       });
   };

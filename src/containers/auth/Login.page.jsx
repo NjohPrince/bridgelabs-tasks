@@ -50,8 +50,27 @@ const LoginPage = () => {
               return;
             }
             const { token, refresh } = data;
-            // console.log(token);
-            // console.log(refresh);
+            localStorage.setItem("refresh_token", refresh);
+
+            fetch(`/api/token`, {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                token,
+              }),
+            }).then((data) => {
+              data.json().then(message => {
+                console.log(message);
+                window.location.pathname = '/';
+              }).catch(error => {
+                console.log(error);
+              })
+            }).catch(error => {
+              console.log(error);
+            })
           })
           .catch((error) => {
             console.log('Inner Error: ', error);
@@ -60,7 +79,7 @@ const LoginPage = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log('Outer Error: ', error.response);
+        console.log('Outer Error: ', error);
         setLoading(false);
       });
   };
