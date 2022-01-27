@@ -7,6 +7,10 @@ const reducers = (state, action) => {
         ...state,
         notify: action.payload,
       };
+    default:
+      return {
+        ...state,
+      };
   }
 };
 

@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import './auth.css';
+
+import { DataContext } from '../../store/GlobalState';
 
 import { signup } from '../../auth-sevice/authService.js';
 
 const RegisterPage = ({ token }) => {
   const preLoadParticles = Array(30).fill(0);
+  const [state, dispatch] = useContext(DataContext);
+
+  console.log(state);
 
   useEffect(() => {
     if (token && token !== '') {
@@ -87,6 +92,10 @@ const RegisterPage = ({ token }) => {
               return;
             }
             console.log(data);
+            dispatch({
+              type: 'NOTIFY',
+              payload: { success: 'Successfully registered. Please login.' },
+            });
             window.location.pathname = '/auth/login';
           })
           .catch((error) => {

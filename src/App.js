@@ -26,14 +26,17 @@ const App = () => {
               setToken(message.token);
             })
             .catch((error) => {
-              console.log(error);
+              // console.log(error);
+              console.clear();
             });
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
+          console.clear();
         });
     }
     getToken();
+    console.clear();
   }, []);
 
   return (

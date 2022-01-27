@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import './auth.css';
+
+import { DataContext } from '../../store/GlobalState';
 
 import { login } from '../../auth-sevice/authService.js';
 
 const LoginPage = ({ token }) => {
   const preLoadParticles = Array(30).fill(0);
+  const [state, dispatch] = useContext(DataContext);
+
+  console.log(state);
 
   useEffect(() => {
     if (token && token !== '') {
@@ -80,6 +85,10 @@ const LoginPage = ({ token }) => {
                   .json()
                   .then((message) => {
                     console.log(message);
+                    dispatch({
+                      type: 'NOTIFY',
+                      payload: { success: message.message },
+                    });
                     window.location.pathname = '/';
                   })
                   .catch((error) => {
