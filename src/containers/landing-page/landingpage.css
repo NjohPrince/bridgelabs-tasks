@@ -30,7 +30,7 @@
     border: 2px solid var(--main-color);
 }
 
-.welcome .content h4 {
+.welcome .content h3 {
     color: rgba(0, 0, 0, 0.6);
     font-size: 18px;
 }

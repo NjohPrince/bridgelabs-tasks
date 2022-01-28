@@ -16,7 +16,7 @@ const LandingPage = ({ token }) => {
             <h2>
               Artificial Intelligence Driving Results For The Travel Industry.
             </h2>
-            <h4>Welcome back! Please log into your account.</h4>
+            <h3>Welcome back! Please log into your account.</h3>
             <div className="search">
               <input type="search" placeholder="Search Services..." />
             </div>
@@ -30,7 +30,7 @@ const LandingPage = ({ token }) => {
             </div>
           </div>
           <div className="illustration flex-one">
-            <img src="/static/bicycle.svg" alt="illustration" />
+            <img width="100%" height="100%" src="/static/bicycle.svg" alt="illustration" />
           </div>
         </div>
       </div>

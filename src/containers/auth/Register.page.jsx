@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './auth.css';
 
@@ -10,7 +10,8 @@ import { signup } from '../../auth-sevice/authService.js';
 const RegisterPage = ({ token }) => {
   const preLoadParticles = Array(30).fill(0);
   const [state, dispatch] = useContext(DataContext);
-
+  const history = useNavigate();
+  
   console.log(state);
 
   useEffect(() => {
@@ -96,7 +97,8 @@ const RegisterPage = ({ token }) => {
               type: 'NOTIFY',
               payload: { success: 'Successfully registered. Please login.' },
             });
-            window.location.pathname = '/auth/login';
+            console.clear();
+            history('/auth/login');
           })
           .catch((error) => {
             console.log('Inner Error: ', error);

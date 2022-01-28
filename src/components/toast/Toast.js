@@ -10,13 +10,13 @@ const Toast = ({ text, type, handleShow }) => {
   return (
     <div
       style={{
-        background: type === 'success' ? 'var(--light-green)' : 'red',
+        background: type === 'success' ? 'green' : 'red',
       }}
       className={`toast ${toggleToast ? 'show' : 'none'}`}
     >
       <h4
         style={{
-          color: type === 'success' ? 'var(--dark-green)' : '#fff',
+          color: type === 'success' ? '#fff' : '#fff',
         }}
       >
         <i

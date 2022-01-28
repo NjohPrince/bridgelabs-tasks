@@ -14,14 +14,14 @@
     font-size: 40px;
 }
 
-.menu a {
+.menu li a {
     color: rgba(0, 0, 0, 0.6);
     font-size: 18px;
     font-weight: 700;
     position: relative;
 }
 
-.menu a::before {
+.menu li a::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -36,17 +36,17 @@
     -webkit-transition: 0.2s ease-in-out;
 }
 
-.menu a:not(:last-of-type) {
+.menu li:not(:last-of-type) {
     margin-right: 2rem;
 }
 
-.menu a:hover,
-.menu a:focus-within {
+.menu li a:hover,
+.menu li a:focus-within {
     color: var(--main-color);
 }
 
-.menu a:hover::before,
-.menu a:focus-within::before {
+.menu li a:hover::before,
+.menu li a:focus-within::before {
     transform: scale(1);
     -webkit-transform: scale(1);
 }

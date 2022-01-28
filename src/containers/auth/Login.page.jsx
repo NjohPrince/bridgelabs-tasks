@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './auth.css';
 
@@ -10,8 +10,9 @@ import { login } from '../../auth-sevice/authService.js';
 const LoginPage = ({ token }) => {
   const preLoadParticles = Array(30).fill(0);
   const [state, dispatch] = useContext(DataContext);
+  const history = useNavigate();
 
-  console.log(state);
+  console.log("State: ", state);
 
   useEffect(() => {
     if (token && token !== '') {
@@ -60,8 +61,6 @@ const LoginPage = ({ token }) => {
               setErrorMessage(data.detail);
               return;
             }
-            console.log(data);
-
             const { token, refresh, first_name, last_name, phone, email } =
               data;
             localStorage.setItem(
@@ -87,9 +86,10 @@ const LoginPage = ({ token }) => {
                     console.log(message);
                     dispatch({
                       type: 'NOTIFY',
-                      payload: { success: message.message },
+                      payload: { success: 'Login Successsful.' },
                     });
-                    window.location.pathname = '/';
+                    console.clear();
+                    history('/');
                   })
                   .catch((error) => {
                     console.log(error);

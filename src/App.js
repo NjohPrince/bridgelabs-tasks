@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Routes, Route } from 'react-router';
 
+import Notify from './components/notify/Notify.js';
+
 import LandingPage from './containers/landing-page/Landing.page.jsx';
 import RegisterPage from './containers/auth/Register.page.jsx';
 import LoginPage from './containers/auth/Login.page.jsx';
@@ -42,6 +44,7 @@ const App = () => {
   return (
     <div className="app">
       <Router>
+        <Notify />
         <Routes>
           <Route exact path="/" element={<LandingPage token={token} />} />
 

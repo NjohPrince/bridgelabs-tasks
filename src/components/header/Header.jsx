@@ -16,6 +16,7 @@ const Header = ({ token }) => {
           .json()
           .then((data) => {
             console.log(data);
+            localStorage.clear();
           })
           .catch((error) => {
             console.log('Error from server');
@@ -36,23 +37,25 @@ const Header = ({ token }) => {
         {NavLinks.length > 0 &&
           NavLinks.map((links, index) => {
             return (
-              <Link
-                className="t-delay-2"
-                to={links.path}
-                key={index + links.name}
-              >
-                {links.name}
-              </Link>
+              <li key={index + links.name}>
+                <Link className="t-delay-2" to={links.path}>
+                  {links.name}
+                </Link>
+              </li>
             );
           })}
         {token && token !== '' && (
           <>
-            <Link className="t-delay-2" to="/profile">
-              Profile
-            </Link>
-            <Link onClick={handleLogout} className="t-delay-2" to="/#logout">
-              Logout
-            </Link>
+            <li>
+              <Link className="t-delay-2" to="/profile">
+                Profile
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleLogout} className="t-delay-2" to="/#logout">
+                Logout
+              </Link>
+            </li>
           </>
         )}
       </ul>
