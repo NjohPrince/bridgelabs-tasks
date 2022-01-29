@@ -5,7 +5,7 @@ import './auth.css';
 
 import { DataContext } from '../../store/GlobalState';
 
-import { signup } from '../../auth-sevice/authService.js';
+import { signup } from '../../services/authService.js';
 
 const RegisterPage = ({ token }) => {
   const preLoadParticles = Array(30).fill(0);

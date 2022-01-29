@@ -8,13 +8,45 @@
     -webkit-box-shadow: 5px 5px 10px 1px #f3f3f3;
 }
 
+.menu-toggler button {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.menu-toggler i {
+    color: var(--main-color);
+    font-size: 25px;
+}
+
 .logo h2 {
     color: var(--main-color);
     font-weight: 800;
     font-size: 40px;
 }
 
-.menu li a {
+.mobile {
+    position: absolute;
+    left: -100vw;
+    top: 5rem;
+    background: #fff;
+    z-index: 9999;
+    border-radius: 3px;
+    padding: 1.5rem 8vw;
+    transition: 0.3s ease-in-out;
+    -webkit-transition: 0.3s ease-in-out;
+}
+
+.mobile.show {
+    left: 0;
+}
+
+.mobile li {
+    margin-bottom: 0.8rem;
+}
+
+.menu li a,
+.mobile li a {
     color: rgba(0, 0, 0, 0.6);
     font-size: 18px;
     font-weight: 700;
@@ -41,7 +73,9 @@
 }
 
 .menu li a:hover,
-.menu li a:focus-within {
+.menu li a:focus-within,
+.mobile li a:hover,
+.mobile li a:focus-within {
     color: var(--main-color);
 }
 

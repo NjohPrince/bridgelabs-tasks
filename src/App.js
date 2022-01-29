@@ -46,7 +46,7 @@ const App = () => {
       <Router>
         <Notify />
         <Routes>
-          <Route exact path="/" element={<LandingPage token={token} />} />
+          <Route exact path="/" element={<LandingPage />} />
 
           {/** Auth Routes */}
           <Route

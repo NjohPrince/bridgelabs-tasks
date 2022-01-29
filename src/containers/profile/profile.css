@@ -1,16 +1,58 @@
 .head {
-    font-size: 25px;
-    font-weight: 800;
-    color: rgba(0, 0, 0, 0.7);
-    margin-bottom: 1rem;
+  font-size: 27px;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 1rem;
+}
+
+.dashboard > h1 {
+  margin-top: 10rem;
 }
 
 .profile h2 {
-    color: rgba(0, 0, 0, 0.7);
-    text-align: center;
-    font-size: 18px;
+  color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  font-size: 18px;
 }
 
 .profile h2 span {
-    font-weight: 700;
+  font-weight: 700;
+}
+
+.manage-cat {
+  padding: 2rem 0;
+}
+
+.manage-cat form {
+  display: flex;
+  display: -ms-flexbox;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  -ms-flex-direction: column;
+}
+
+.manage-cat form .head h2 {
+  font-size: 27px;
+  margin-bottom: 0.5rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 800;
+}
+
+.manage-cat form .form-control {
+  display: flex;
+  display: -ms-flexbox;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  -ms-flex-direction: column;
+}
+
+.manage-cat form .form-control input {
+  padding-left: 0.8rem;
+  width: 100%;
+}
+
+.manage-cat form .form-control button {
+  padding: 0.5rem;
 }

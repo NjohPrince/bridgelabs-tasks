@@ -5,7 +5,7 @@ import './auth.css';
 
 import { DataContext } from '../../store/GlobalState';
 
-import { login } from '../../auth-sevice/authService.js';
+import { login } from '../../services/authService.js';
 
 const LoginPage = ({ token }) => {
   const preLoadParticles = Array(30).fill(0);
