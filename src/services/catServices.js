@@ -1,16 +1,16 @@
-export const createCat = async (name, description) => {
-  return await fetch(`${process.env.REACT_APP_API_KEY}/category/`, {
+export const createCat = async (name, description, image) => {
+  return await fetch(`${process.env.REACT_APP_API_KEY}/category/create`, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, description }),
+    body: JSON.stringify({ name, description, image }),
   });
 };
 
 export const listCat = async () => {
-  return await fetch(`${process.env.REACT_APP_API_KEY}/category/`, {
+  return await fetch(`${process.env.REACT_APP_API_KEY}/category/categories`, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -19,23 +19,22 @@ export const listCat = async () => {
   });
 };
 
-export const updateCat = async (id, category) => {
-  return await fetch(`${process.env.REACT_APP_API_KEY}/category/${id}`, {
+export const updateCat = async (id, name, description, image) => {
+  return await fetch(`${process.env.REACT_APP_API_KEY}/category/update/${id}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ category }),
+    body: JSON.stringify({ name, description, image }),
   });
 };
 
 export const deleteCat = async (id) => {
-  return await fetch(`${process.env.REACT_APP_API_KEY}/category/${id}`, {
+  return await fetch(`${process.env.REACT_APP_API_KEY}/category/delete/${id}`, {
     method: "DELETE",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
     },
   });
 };

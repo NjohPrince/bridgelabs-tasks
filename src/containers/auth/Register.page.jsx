@@ -12,8 +12,6 @@ const RegisterPage = ({ token }) => {
   const [state, dispatch] = useContext(DataContext);
   const history = useNavigate();
   
-  console.log(state);
-
   useEffect(() => {
     if (token && token !== '') {
       window.location.pathname = '/';

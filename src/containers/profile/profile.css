@@ -5,14 +5,28 @@
   margin-bottom: 1rem;
 }
 
-.dashboard > h1 {
-  margin-top: 10rem;
+.dashboard {
+  padding-top: 8.5rem !important;
+}
+
+.dashboard > div {
+  margin: 0.5rem;
+}
+
+.dashboard > div:nth-child(2) {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding: 0.5rem;
 }
 
 .profile h2 {
   color: rgba(0, 0, 0, 0.7);
   text-align: center;
   font-size: 18px;
+}
+
+.dashboard {
+  padding: 0 8vw;
 }
 
 .profile h2 span {
@@ -55,4 +69,60 @@
 
 .manage-cat form .form-control button {
   padding: 0.5rem;
+  font-size: 15px;
+}
+
+.categories .cat {
+  padding: 1rem 0.8rem;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cat-preview {
+  margin-bottom: 2rem;
+}
+
+.cat-preview .data h2 {
+  margin-top: 0.8rem;
+}
+
+.categories {
+  display: grid;
+  display: -ms-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.categories .cat h2,
+.cat-preview .data h2 {
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.categories .cat h3,
+.cat-preview .data h3 {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.categories .btn-collection button {
+  margin: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  font-size: 15px;
+  outline: none;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+}
+
+.categories .btn-collection .danger {
+  background-color: rgb(192, 54, 54);
+}
+
+.categories .btn-collection .normal {
+  background-color: rgb(44, 165, 44);
 }

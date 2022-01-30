@@ -1,5 +1,5 @@
 export const login = async (email, password) => {
-  return await fetch(`${process.env.REACT_APP_API_KEY}/user/login/`, {
+  return await fetch(`${process.env.REACT_APP_API_KEY}/user/login`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -17,7 +17,7 @@ export const signup = async (
   password,
   avatar
 ) => {
-  return await fetch(`${process.env.REACT_APP_API_KEY}/user/register/`, {
+  return await fetch(`${process.env.REACT_APP_API_KEY}/user/register`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -28,7 +28,7 @@ export const signup = async (
 };
 
 export const logout = async (refresh_token) => {
-  return await fetch(`${process.env.REACT_APP_API_KEY}/user/logout/`, {
+  return await fetch(`${process.env.REACT_APP_API_KEY}/user/logout`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

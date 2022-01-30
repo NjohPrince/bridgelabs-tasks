@@ -12,8 +12,6 @@ const LoginPage = ({ token }) => {
   const [state, dispatch] = useContext(DataContext);
   const history = useNavigate();
 
-  console.log("State: ", state);
-
   useEffect(() => {
     if (token && token !== '') {
       window.location.pathname = '/';
