@@ -53,6 +53,7 @@ const Profile = ({ token }) => {
     listCat()
       .then((response) => {
         response.json().then((data) => {
+          console.log(data);
           setCategories(data);
         });
       })
@@ -113,6 +114,7 @@ const Profile = ({ token }) => {
       updateCat(id, category, description, formData.file)
         .then((response) => {
           response.json().then((data) => {
+            console.log("Update", data);
             setAdding(false);
             setGetCats(!getCats);
           });
@@ -171,7 +173,7 @@ const Profile = ({ token }) => {
               </h2>
             </div>
             <div className="manage-cat">
-              <form onSubmit={handleSubmit}>
+              <form encType="multipart/form-data" onSubmit={handleSubmit}>
                 <div className="head">
                   <h2>Create Awesome Categories</h2>
                 </div>
@@ -224,7 +226,9 @@ const Profile = ({ token }) => {
                   style={{ height: "250px", overflow: "hidden" }}
                   className="image"
                 >
-                  <img
+                  {
+                    formData.filePreview ?
+                    <img
                     style={{
                       width: "100%",
                       height: "100%",
@@ -234,7 +238,9 @@ const Profile = ({ token }) => {
                     }}
                     src={formData.filePreview}
                     alt="preview"
-                  />
+                  /> :
+                  <h4 style={{color: 'rgba(0, 0, 0, 0.7)'}}>Preview Display Arena</h4>
+                  }
                 </div>
                 <div className="data">
                   <h2>{category}</h2>
@@ -248,6 +254,7 @@ const Profile = ({ token }) => {
                 categories.map((cat, index) => {
                   return (
                     <div className="cat" key={index + cat.name}>
+                      <img src={`https://simplor.herokuapp.com${cat.image}`} alt={cat.name} />
                       <h2 className="text-center">{cat.name}</h2>
                       <h3 className="text-center">{cat.description}</h3>
                       <div className="btn-collection flex a-j-center">

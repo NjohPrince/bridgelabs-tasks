@@ -93,6 +93,10 @@
   gap: 0.5rem;
 }
 
+.categories .cat img {
+  width: 100%;
+}
+
 .categories .cat h2,
 .cat-preview .data h2 {
   font-size: 25px;

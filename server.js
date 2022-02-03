@@ -5,13 +5,13 @@ const express = require('express');
 var cors = require('cors');
 
 var corsOptions = {
-  origin: 'http://localhost:3001',
+  origin: 'http://localhost:3000',
   methods: "GET, POST",
   optionsSuccessStatus: 200
 }
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 const publicPath = path.join(__dirname, 'build');
 app.use(express.static(publicPath));

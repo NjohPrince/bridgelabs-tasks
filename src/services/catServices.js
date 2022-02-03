@@ -1,11 +1,15 @@
 export const createCat = async (name, description, image) => {
+  const data = new FormData();
+  data.append("name", name);
+  data.append("description", description);
+  data.append("image", image);
   return await fetch(`${process.env.REACT_APP_API_KEY}/category/create`, {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
     },
-    body: JSON.stringify({ name, description, image }),
+    body: data,
   });
 };
 
