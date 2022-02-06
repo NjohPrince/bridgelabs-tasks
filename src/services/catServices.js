@@ -1,16 +1,20 @@
+import axios from "axios";
+
+const axiosInstance = axios.create({
+  baseURL: process.env.REACT_APP_API_KEY,
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
+
 export const createCat = async (name, description, image) => {
   const data = new FormData();
+
+  data.append("image", image);
   data.append("name", name);
   data.append("description", description);
-  data.append("image", image);
-  return await fetch(`${process.env.REACT_APP_API_KEY}/category/create`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "multipart/form-data",
-    },
-    body: data,
-  });
+
+  return await axiosInstance.post(`/category/create`, data);
 };
 
 export const listCat = async () => {

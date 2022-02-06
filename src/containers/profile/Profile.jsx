@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+
+import { DataContext } from "../../store/GlobalState";
 
 import {
   listCat,
@@ -12,6 +14,8 @@ import "./profile.css";
 import Header from "../../components/header/Header.jsx";
 
 const Profile = ({ token }) => {
+  const [state, dispatch] = useContext(DataContext);
+
   const [formData, setFormData] = useState({
     file: [],
     filePreview: "",
@@ -41,6 +45,10 @@ const Profile = ({ token }) => {
       category: "",
       description: "",
     });
+    dispatch({
+      type: "NOTIFY",
+      payload: { success: "Form Data Cleared." },
+    });
   };
 
   const { category, description } = formData;
@@ -53,7 +61,6 @@ const Profile = ({ token }) => {
     listCat()
       .then((response) => {
         response.json().then((data) => {
-          console.log(data);
           setCategories(data);
         });
       })
@@ -84,6 +91,10 @@ const Profile = ({ token }) => {
         });
         setIsDeleting(false);
         setGetCats(!getCats);
+        dispatch({
+          type: "NOTIFY",
+          payload: { success: "Successfully deleted." },
+        });
         console.clear();
       })
       .catch((error) => {
@@ -116,6 +127,10 @@ const Profile = ({ token }) => {
           response.json().then((data) => {
             console.log("Update", data);
             setAdding(false);
+            dispatch({
+              type: "NOTIFY",
+              payload: { success: "Updated Successfully." },
+            });
             setGetCats(!getCats);
           });
         })
@@ -134,10 +149,12 @@ const Profile = ({ token }) => {
       setAdding(true);
       createCat(category, description, formData.file)
         .then((response) => {
-          response.json().then((data) => {
-            // console.log(data);
-            setAdding(false);
-            setGetCats(!getCats);
+          console.log(response.data);
+          setAdding(false);
+          setGetCats(!getCats);
+          dispatch({
+            type: "NOTIFY",
+            payload: { success: "Created Successsful." },
           });
         })
         .catch((error) => {
@@ -208,7 +225,7 @@ const Profile = ({ token }) => {
                     disabled={adding}
                     style={{
                       marginRight: "0.2rem",
-                      opacity: `${isDeleting ? "0.3" : "1"}`,
+                      opacity: `${adding ? "0.3" : "1"}`,
                     }}
                     type="submit"
                   >
@@ -226,21 +243,23 @@ const Profile = ({ token }) => {
                   style={{ height: "250px", overflow: "hidden" }}
                   className="image"
                 >
-                  {
-                    formData.filePreview ?
+                  {formData.filePreview ? (
                     <img
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      borderRadius: "3px",
-                      objectFit: "cover",
-                      objectPosition: "center",
-                    }}
-                    src={formData.filePreview}
-                    alt="preview"
-                  /> :
-                  <h4 style={{color: 'rgba(0, 0, 0, 0.7)'}}>Preview Display Arena</h4>
-                  }
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: "3px",
+                        objectFit: "cover",
+                        objectPosition: "center",
+                      }}
+                      src={formData.filePreview}
+                      alt="preview"
+                    />
+                  ) : (
+                    <h4 style={{ color: "rgba(0, 0, 0, 0.7)" }}>
+                      Preview Display Arena
+                    </h4>
+                  )}
                 </div>
                 <div className="data">
                   <h2>{category}</h2>
@@ -254,7 +273,10 @@ const Profile = ({ token }) => {
                 categories.map((cat, index) => {
                   return (
                     <div className="cat" key={index + cat.name}>
-                      <img src={`https://simplor.herokuapp.com${cat.image}`} alt={cat.name} />
+                      <img
+                        src={`https://simplor.herokuapp.com${cat.image}`}
+                        alt={cat.name}
+                      />
                       <h2 className="text-center">{cat.name}</h2>
                       <h3 className="text-center">{cat.description}</h3>
                       <div className="btn-collection flex a-j-center">

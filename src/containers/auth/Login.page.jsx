@@ -16,7 +16,30 @@ const LoginPage = ({ token }) => {
   const history = useNavigate();
 
   const onSuccess = (res) => {
-    console.log(`[LOGIN SUCCESSFUL], current User: ${res.profileObj}`);
+    console.log(`[LOGIN SUCCESSFUL], current User: ${res}`);
+    fetch("https://www.googleapis.com/auth/userinfo.profile", {
+      mode: "no-cors",
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization:
+          "Bearer ya29.A0ARrdaM9C0Q2nVMrrRB4I-GKTE7aHOPW34K7ij8vybr4Alak7y31-PnEJamN-GDapwHd1cTUA6sXBfVyLL_FVSdLPvQCFrj8pWqmFLr97wwqYsA2ZMo-ktd-4KMRPwHKSBDGQGTSV1NUiwX3Zs2cJ_L9cEUas",
+      },
+    })
+      .then((response) => {
+        console.log(response.json());
+        response
+          .json()
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((error) => {
+            console.log("Error", error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const onFailure = (res) => {
@@ -70,6 +93,7 @@ const LoginPage = ({ token }) => {
               setErrorMessage(data.detail);
               return;
             }
+            console.log(data);
             const { token, refresh, first_name, last_name, phone, email } =
               data;
             localStorage.setItem(
@@ -134,9 +158,8 @@ const LoginPage = ({ token }) => {
           <GoogleLogin
             clientId={client_id}
             buttonText="Login With Google"
-            cookiePolicy={"single_host_origin"}
+            cookiePolicy="single_host_origin"
             style={{ marginTop: "10px", width: "100%" }}
-            isSignedIn={true}
             onSuccess={onSuccess}
             onFailure={onFailure}
           />

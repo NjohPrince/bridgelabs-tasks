@@ -5,7 +5,7 @@ const express = require('express');
 var cors = require('cors');
 
 var corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: '*',
   methods: "GET, POST",
   optionsSuccessStatus: 200
 }

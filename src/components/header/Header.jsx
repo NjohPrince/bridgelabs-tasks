@@ -63,17 +63,10 @@ const Header = () => {
   const handleLogout = () => {
     logout(token)
       .then((response) => {
-        response
-          .json()
-          .then((data) => {
-            console.log(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        console.log(response.data);
       })
       .catch((error) => {
-        console.log("Network issues.");
+        console.log(error);
       });
   };
 
