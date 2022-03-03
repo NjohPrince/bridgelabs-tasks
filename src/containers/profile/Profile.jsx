@@ -274,7 +274,7 @@ const Profile = ({ token }) => {
                   return (
                     <div className="cat" key={index + cat.name}>
                       <img
-                        src={`https://simplor.herokuapp.com${cat.image}`}
+                        src={cat.image}
                         alt={cat.name}
                       />
                       <h2 className="text-center">{cat.name}</h2>
